@@ -67,7 +67,7 @@ async function fetchReport(data) {
     const messages = [
         {
             role: 'system',
-            content: 'You are a trading guru. Given data on share prices over the past 3 days, write a report of no more than 150 words describing the stocks performance and recommending whether to buy, hold or sell. Use the examples provided between ### to set the style your response.'
+            content: 'You are a trading guru. Given data on share prices over the past 3 days, write a report of no more than 150 words describing the stocks performance and recommending whether to buy, hold or sell. Use the examples provided between ### to set the style your response. respond in spanish'
         },
         {
             role: 'user',
@@ -96,7 +96,7 @@ async function fetchReport(data) {
         if (!response.ok) {
             throw new Error(`Worker Error: ${data.error}`)
         }
-        renderReport(data.content)
+        renderReport(data.message)
     } catch (err) {
         console.error(err.message)
         loadingArea.innerText = 'Unable to access AI. Please refresh and try again'
