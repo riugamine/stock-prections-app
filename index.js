@@ -83,16 +83,18 @@ async function fetchReport(data) {
     
     try {
         const url = 'https://openai-api-worker.jangel9829.workers.dev'
-        
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(messages)
+            body: JSON.stringify({
+                messages: messages,
+                model: 'gpt-4o-mini'
+            })
         })
         const data = await response.json()
-        
+        console.log(data)
         if (!response.ok) {
             throw new Error(`Worker Error: ${data.error}`)
         }
